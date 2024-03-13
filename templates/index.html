@@ -5,11 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
     <title>{{ titulo }}</title>
 </head>
 
 <body>
-    <h1>{{ titulo }}</h1>
+    <div class="container">
+        <h1>{{ titulo }}</h1>
+        <table class="table table-bordered table-responsive table-striped">
+            <thead class="thead-default">
+                <tr>
+                    <th>Alimento</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alimento in alimentos %}
+                <tr>
+                    <td>{{ alimento.nome }}</td>
+                    <td>{{ alimento.quantidade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    
+        </table>
+    </div>
 </body>
 
 </html>
