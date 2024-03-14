@@ -20,7 +20,21 @@ def index():
 
 @app.route('/novo')
 def novo():
-    return render_template('novo.html', titulo='Novo treino')
+    return render_template('novo.html', titulo='Novo alimento')
+
+
+@app.route(
+    '/criar',
+    methods=[
+        'POST',
+    ],
+)
+def criar():
+    nome = request.form['nome']
+    quantidade = request.form['quantidade']
+    alimento = Alimento(nome, quantidade)
+    alimentos.append(alimento)
+    return redirect(url_for('index'))
 
 
 app.run(debug=True)
